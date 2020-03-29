@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Fetchtex\FAQs\Model\Faq">
+        <arguments>
+            <argument name="resource" xsi:type="object">Fetchtex\FAQs\Model\ResourceModel\Faq</argument>
+        </arguments>
+    </type>
+    <type name="Fetchtex\FAQs\Model\FaqCategory">
+        <arguments>
+            <argument name="resource" xsi:type="object">\Fetchtex\FAQs\Model\ResourceModel\FaqCategory</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="fetchtex_faqs_faqs_listing_data_source" xsi:type="string">Fetchtex\FAQs\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Fetchtex\FAQs\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">fetchtex_faq</argument>
+            <argument name="resourceModel" xsi:type="string">Fetchtex\FAQs\Model\ResourceModel\Faq</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,37 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="fetchtex_faq" resource="default" engine="innodb"
+           comment="FAQs Table">
+        <column xsi:type="int" name="entity_id" padding="11" unsigned="false" nullable="false" identity="true"/>
+        <column xsi:type="datetime" name="created_at" default="CURRENT_TIMESTAMP" nullable="true"/>
+        <column xsi:type="datetime" name="updated_at" on_update="true" nullable="true"/>
+        <column xsi:type="text" name="question" nullable="false" comment="Question Rich Text"/>
+        <column xsi:type="text" name="answer" nullable="false" comment="Answer Rich Text"/>
+        <column xsi:type="int" name="category_id" nullable="false" default="0"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FETCHTEX_FAQ_CAT_ID_FETCHTEX_FAQ_CAT_ENTITY_ID" table="fetchtex_faq"
+                    column="category_id" referenceTable="fetchtex_faq_category" referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+        <index referenceId="FETCHTEX_FAQ_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="fetchtex_faq_category" resource="default" engine="innodb"
+           comment="FAQs Table">
+        <column xsi:type="int" name="entity_id" padding="11" unsigned="false" nullable="false" identity="true"/>
+        <column xsi:type="int" name="parent_id" nullable="true" comment="Parent Category ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" comment="Category Name" length="255"/>
+        <column xsi:type="varchar" name="thumbnail" nullable="true" comment="Thumnail Image URL" length="255"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+
+        <index referenceId="FETCHTEX_FAQ_CATEGORY_WEBSITE_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+</schema>

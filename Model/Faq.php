@@ -21,31 +21,31 @@ class Faq extends \Magento\Framework\Model\AbstractModel implements IdentityInte
 
     public function getAnswer()
     {
-        return $this->getData('answer');
+        return $this->getData(self::ANSWER);
     }
 
     public function setAnswer( $answer )
     {
-        return $this->setData('answer', $answer);
+        return $this->setData(self::ANSWER, $answer);
     }
 
     public function getQuestion()
     {
-        return $this->getData('question');
+        return $this->getData(self::QUESTION);
     }
 
     public function setQuestion( $question )
     {
-        return $this->setData('question', $question);
+        return $this->setData(self::QUESTION, $question);
     }
 
     public function getCategoryId()
     {
-        return $this->getData('category_id');
+        return $this->getData(self::CATEGORY_ID);
     }
 
     public function setCategoryId( $categoryId )
     {
-        return $this->setData('category_id', $categoryId);
+        return $this->setData(self::CATEGORY_ID, $categoryId);
     }
 }

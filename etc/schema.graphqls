@@ -1,0 +1,23 @@
+# FAQ Graphql schem
+
+type Query {
+    faqById (
+        id: Int @doc(description: "id of the FAQ")
+    ): FAQ @resolver(class: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ") @doc(description: "faq query returns single FAQ object ") @cache(cacheIdentity: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ\\Identity")
+    allfaqs : FAQList @resolver(class: "Fetchtex\\FAQs\\Model\\Resolver\\FAQList") @doc(description: "faq query returns single FAQ object ") @cache(cacheIdentity: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ\\FAQListIdentity")
+}
+
+type FAQ @doc(description: "FAQ contains information about q&a and their categories") {
+    question : String @doc(description: "Question text ")
+    answer : String @doc(description: "Answer text ")
+    category_id : Int @doc(description: "Category ID")
+}
+
+type FAQList @doc(description: "lists all FAQs with total count") {
+    items: [FAQ] @doc(description: "Array of FAQ")
+    total_count: Int @doc(description: "Total count of all faqs")
+}
+
+
+
+

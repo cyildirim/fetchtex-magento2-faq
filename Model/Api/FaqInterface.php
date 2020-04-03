@@ -6,6 +6,10 @@ namespace Fetchtex\FAQs\Model\Api;
 
 interface FaqInterface
 {
+    const ID = 'entity_id';
+    const QUESTION = 'question';
+    const ANSWER = 'answer';
+    const CATEGORY_ID = 'category_id';
 
     /**
      * @return string

@@ -40,6 +40,16 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         return $this->join(['ffc' => 'fetchtex_faq_category'], 'ffc.entity_id=main_table.category_id', ['category_name' => 'name', 'category_id' => 'ffc.entity_id']);
     }
 
+    public function addQuestionFilter( $question )
+    {
+        return $this->addFieldToFilter("question", ["like" => $question]);
+    }
+
+    public function addCategoryIdFilter( $category_id )
+    {
+        return $this->addFieldToFilter("category_id", ["eq" => $category_id]);
+    }
+
     /**
      * @param $id
      */

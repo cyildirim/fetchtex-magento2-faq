@@ -4,7 +4,9 @@ type Query {
     faqById (
         id: Int @doc(description: "id of the FAQ")
     ): FAQ @resolver(class: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ") @doc(description: "faq query returns single FAQ object ") @cache(cacheIdentity: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ\\Identity")
-    allfaqs : FAQList @resolver(class: "Fetchtex\\FAQs\\Model\\Resolver\\FAQList") @doc(description: "faq query returns single FAQ object ") @cache(cacheIdentity: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ\\FAQListIdentity")
+    allfaqs(
+        filter: FAQListInput @doc(description: "FAQ Filtering")
+    ) : FAQList @resolver(class: "Fetchtex\\FAQs\\Model\\Resolver\\FAQList") @doc(description: "faq query returns single FAQ object ") @cache(cacheIdentity: "Fetchtex\\FAQs\\Model\\Resolver\\FAQ\\FAQListIdentity")
 }
 
 type FAQ @doc(description: "FAQ contains information about q&a and their categories") {
@@ -18,6 +20,8 @@ type FAQList @doc(description: "lists all FAQs with total count") {
     total_count: Int @doc(description: "Total count of all faqs")
 }
 
-
-
+input FAQListInput @doc(description: "Filter Type for FAQ Listing"){
+    question: String @doc(description : "Search by question text")
+    category_id: Int @doc(description: "Search by category_id")
+}
 

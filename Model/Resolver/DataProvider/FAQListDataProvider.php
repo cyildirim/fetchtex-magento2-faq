@@ -20,8 +20,17 @@ class FAQListDataProvider
         $this->faqCollection = $faqCollectionFactory->create();
     }
 
-    public function getData()
+    public function getData( $question = null, $categoryId = null )
     {
+
+        if (isset($categoryId)) {
+            $this->faqCollection->addCategoryIdFilter($categoryId);
+        }
+
+        if (isset($question)) {
+            $this->faqCollection->addQuestionFilter($question);
+        }
+
         $items = [];
 
         foreach ($this->faqCollection->getData() as $item) {

@@ -11,6 +11,7 @@ use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Value;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder;
 
 class FAQ implements ResolverInterface
 {
@@ -19,10 +20,15 @@ class FAQ implements ResolverInterface
      * @var FAQDataProvider
      */
     private $dataProvider;
+    /**
+     * @var Builder
+     */
+    private $searchCriteriaBuilder;
 
-    public function __construct( FAQDataProvider $dataProvider )
+    public function __construct( FAQDataProvider $dataProvider, Builder $searchCriteriaBuilder )
     {
         $this->dataProvider = $dataProvider;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**

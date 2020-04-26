@@ -51,7 +51,7 @@ class Edit extends Action
          */
         $faq = $this->faqFactory->create();
 
-        if ($params['entity_id']) {
+        if (array_key_exists("entity_id", $params) && $params['entity_id']) {
             $faqModel = $faq->load($params['entity_id']);
         }
 

@@ -1,15 +1,21 @@
 <?php
 /**
- * Ship to multiple address template
  *
  * @var $block Magento\Framework\View\Element\Template
  */
 ?>
 <div id="faq-container">
     <h2><?= __("Frequently Asked Questions") ?></h2>
-    <input type="text" placeholder="Search"/>
+    <input id="faq-search-input" type="text" placeholder="Search" />
     <div id="faq-list">
 
     </div>
 </div>
 
+<script type="text/x-magento-init">
+{
+    "*" : {
+        "Fetchtex_FAQs/js/faq": {}
+        }
+}
+</script>

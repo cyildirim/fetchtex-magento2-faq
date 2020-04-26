@@ -12,7 +12,7 @@ type Query {
 type FAQ @doc(description: "FAQ contains information about q&a and their categories") {
     question : String @doc(description: "Question text ")
     answer : String @doc(description: "Answer text ")
-    category_id : Int @doc(description: "Category ID")
+    category : FAQCategory @doc(description: "Category Object")
 }
 
 type FAQList @doc(description: "lists all FAQs with total count") {
@@ -20,8 +20,13 @@ type FAQList @doc(description: "lists all FAQs with total count") {
     total_count: Int @doc(description: "Total count of all faqs")
 }
 
-input FAQListInput @doc(description: "Filter Type for FAQ Listing"){
+input FAQListInput @doc(description: "Filter Input Type for FAQ Listing"){
     question: String @doc(description : "Search by question text")
     category_id: Int @doc(description: "Search by category_id")
+}
+
+type FAQCategory @doc(description: "Type for FAQ Category"){
+    id: Int @doc(description: "FAQ category id")
+    name: String @doc(description : "FAQ category name")
 }
 

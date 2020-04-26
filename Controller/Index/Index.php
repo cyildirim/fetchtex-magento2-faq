@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Fetchtex\FAQs\Controller;
-
+namespace Fetchtex\FAQs\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;

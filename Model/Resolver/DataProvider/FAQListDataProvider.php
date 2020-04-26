@@ -23,6 +23,8 @@ class FAQListDataProvider
     public function getData( $question = null, $categoryId = null )
     {
 
+        $this->faqCollection->joinFaqCategory();
+
         if (isset($categoryId)) {
             $this->faqCollection->addCategoryIdFilter($categoryId);
         }
@@ -38,7 +40,10 @@ class FAQListDataProvider
                 FaqInterface::ID => $item['entity_id'],
                 FaqInterface::QUESTION => $item['question'],
                 FaqInterface::ANSWER => $item['answer'],
-                FaqInterface::CATEGORY_ID => $item['category_id'],
+                "category" => [
+                    "id" =>$item['category_id'],
+                    "name" =>$item['category_name']
+                ],
             ];
         }
 

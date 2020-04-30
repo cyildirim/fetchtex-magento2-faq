@@ -26,3 +26,5 @@ query myFaq {
 tested with Magento CE 2.3.4
 
 
+![](https://media.giphy.com/media/Mc0O3BrnIzl7PfbLyb/giphy.gif)
+

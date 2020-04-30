@@ -5,6 +5,14 @@ Hereby FAQ module provides to list FAQs with the categories. FAQs can be added t
 Graphql requests are used by frontend with only search functionality. Requests are sent by apollo-boost using GET method
 so that they can be cached on backend.  
 
+## Install Module
+
+```
+composer require fetchtex/module-faq
+
+bin/magento module:enable Fetchtex_FAQs
+bin/magento setup:upgrade
+```
 
 ## Sample Request 
 

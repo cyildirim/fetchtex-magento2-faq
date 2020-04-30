@@ -15,11 +15,16 @@ class Save extends Action
      * @var FaqFactory
      */
     private $faqFactory;
+    /**
+     * @var \Fetchtex\FAQs\Model\ResourceModel\Faq
+     */
+    private $faqResourceModel;
 
-    public function __construct( Action\Context $context, FaqFactory $faqFactory )
+    public function __construct( Action\Context $context, FaqFactory $faqFactory, \Fetchtex\FAQs\Model\ResourceModel\Faq $faqResourceModel )
     {
         parent::__construct($context);
         $this->faqFactory = $faqFactory;
+        $this->faqResourceModel = $faqResourceModel;
     }
 
     protected function _isAllowed()
@@ -37,17 +42,15 @@ class Save extends Action
              */
             $faq = $this->faqFactory->create();
 
-            if (array_key_exists('entity_id', $params)) {
+            if (array_key_exists('entity_id', $params) && !empty($params['entity_id'])) {
                 $faq->setEntityId($params['entity_id']);
             }
             $faq->setQuestion($params['question']);
             $faq->setAnswer($params['answer']);
             $faq->setCategoryId($params['category_id']);
-            $faq->save();
+            $this->faqResourceModel->save($faq);
             $this->messageManager->addSuccessMessage("FAQ is successfully added");
         } catch (\Exception $e) {
-            print_r($e->getTraceAsString());
-            exit();
             $this->messageManager->addErrorMessage("FAQ cannot be added, please try again later");
         }
         $resultRedirect = $this->resultRedirectFactory->create();

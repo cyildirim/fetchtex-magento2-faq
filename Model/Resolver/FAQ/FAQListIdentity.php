@@ -13,7 +13,7 @@ class FAQListIdentity implements IdentityInterface
 {
 
     /** @var string */
-    private $cacheTag = Faq::CACHE_TAG;
+    private $cacheTag = 'faq_list';
 
     /**
      * Get identity tags from resolved data.

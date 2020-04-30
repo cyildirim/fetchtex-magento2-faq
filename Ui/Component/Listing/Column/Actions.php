@@ -9,6 +9,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
 class Actions extends Column
 {
 
+
     public function prepareDataSource( array $dataSource )
     {
         if (isset($dataSource['data']['items'])) {
@@ -16,7 +17,7 @@ class Actions extends Column
                 // here we can also use the data from $item to configure some parameters of an action URL
                 $item[$this->getData('name')] = [
                     'edit' => [
-                        'href' => "../edit/entity_id/" . $item["entity_id"],
+                        'href' => $this->context->getUrl('fetchtex_faqs/faqs/edit', ['entity_id' => $item["entity_id"]]),
                         'label' => __('Edit')
                     ],
                     'remove' => [

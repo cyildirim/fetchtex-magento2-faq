@@ -3,7 +3,7 @@ define(['jquery', 'apollo-client'], function ($, ApolloBoost) {
 
     const {ApolloClient, gql} = ApolloBoost;
 
-    const client = new ApolloClient({url: '/graphql'});
+    const client = new ApolloClient({url: '/graphql', fetchOptions: {method: 'GET'}});
 
     const query = gql(`
     query myFaq {

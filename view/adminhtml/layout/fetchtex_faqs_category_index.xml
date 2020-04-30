@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="fetchtex_faqs_faqs_listing"/>
+            <uiComponent name="fetchtex_faqs_faq_category_listing"/>
         </referenceContainer>
     </body>
 </page>

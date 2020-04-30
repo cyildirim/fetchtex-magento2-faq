@@ -1,4 +1,4 @@
-#Magento 2 FAQ GraphQL Module
+# Magento 2 FAQ GraphQL Module
 
 Hereby FAQ module provides to list FAQs with the categories. FAQs can be added through `Content > FAQ` section. 
 
